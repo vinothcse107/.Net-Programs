@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ConsoleTest.Programs;
+namespace ConsoleTest.Program;
 
 /*
 OUTPUT :
@@ -14,7 +9,7 @@ Employee subbalakshmi Promoted
 */
 public class Delegates
 {
-      public static void Main() // Main()
+      public static void Mein() // Main()
       {
 
             List<Employee> emplist = new List<Employee>();

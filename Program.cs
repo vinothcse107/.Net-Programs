@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,28 +10,37 @@ public class Program
 {
       public static void Main()
       {
+            Stopwatch st = new Stopwatch();
+            st.Start();
+            // *****
 
-            List<Employee> emplist = new List<Employee>();
+            // Employee Data In List
+            Employee[] ex = {
+                  new Employee() { Id = 120, Name = "Vinoth", Experience = 5 },
+                  new Employee() { Id = 121, Name = "Sivakumar", Experience = 9 },
+                  new Employee() { Id = 122, Name = "Vanitha", Experience = 4 },
+                  new Employee() { Id = 123, Name = "Vignesh", Experience = 7 },
+                  new Employee() { Id = 124, Name = "Pravin", Experience = 6 },
+                  new Employee() { Id = 125, Name = "Keerthi", Experience = 2 }
+            };
+            var l = new List<Employee>();
+            l.AddRange(ex);
 
-            emplist.Add(new Employee() { Id = 220, Name = "sivakumar", Experience = 8 });
-            emplist.Add(new Employee() { Id = 120, Name = "Aravind", Experience = 6 });
-            emplist.Add(new Employee() { Id = 150, Name = "jagadeesh", Experience = 10 });
-            emplist.Add(new Employee() { Id = 175, Name = "subbalakshmi", Experience = 9 });
 
-            foreach (var x in emplist)
-            {
-                  Console.WriteLine("{0} {1}", x.Id, x.Name);
-            }
+            // *****
+
+            st.Stop();
+            Console.WriteLine(st.Elapsed);
       }
 }
 
-class Employee
+// IComparable - To override The Dafault Comparing Method for Complex Object Comparision
+// IEquatable - overrides Equals Method for Complex Object Equality
+// IComparer - To override for manual sorting when base class is Not Extendable
+
+public class Employee
 {
       public int Id { set; get; }
       public string? Name { set; get; }
       public int Experience { set; get; }
 }
-
-
-
-
