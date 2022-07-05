@@ -9,7 +9,12 @@ OUTPUT :
 */
 public class ExtensionMethodOfString
 {
-      public static void Mark() // Main()
+      public ExtensionMethodOfString()
+      {
+            Mark();
+      }
+
+      public static void Mark()
       {
             string Name = "Markus William";
             Console.WriteLine(Name.StringExtend());

@@ -9,7 +9,12 @@ Employee subbalakshmi Promoted
 */
 public class Delegates
 {
-      public static void Mein() // Main()
+      public Delegates()
+      {
+            Mein();
+      }
+
+      public static void Mein()
       {
 
             List<Employee> emplist = new List<Employee>();
@@ -27,16 +32,12 @@ public class Delegates
                   if (ee.Id >= 130) return true;
                   else return false;
             }
-
             Employee.PromoteEmployee(emplist, EligibleEmp);
 
             //Method 2
-
             Employee.PromoteEmployee(emplist, x => x.Id > 125);
 
             // Method 3
-
-
             var x = (Employee y) => y.Id > 125;
             Employee.Lambda_Optimized(emplist, x);
 
@@ -48,7 +49,7 @@ delegate bool IsPromotable(Employee emp1);
 class Employee
 {
       public int Id { set; get; }
-      public string? Name { set; get; }
+      public string Name { set; get; }
       public int Experience { set; get; }
 
       public static void PromoteEmployee(List<Employee> emp, IsPromotable del)
@@ -60,6 +61,7 @@ class Employee
                         Console.WriteLine("Employee" + " " + employee.Name + " " + "Promoted");
                   }
             }
+            Console.WriteLine();
       }
 
       public static void Lambda_Optimized(List<Employee> emp, Func<Employee, bool> del)
@@ -71,6 +73,7 @@ class Employee
                         Console.WriteLine("Employee" + " " + employee.Name + " " + "Promoted");
                   }
             }
+            Console.WriteLine();
       }
 }
 
