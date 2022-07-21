@@ -26,7 +26,7 @@ public static class StringExtender
       {
 
             // Extend Your Logic Here !
-            var x = "Welcome " + ser.ToUpper() + " !";
+            var x = $"Welcome {ser.ToUpper()} !";
             return x;
       }
 }
