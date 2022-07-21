@@ -18,8 +18,8 @@ public class GenericList<T>
                   data = t;
             }
 
-            private Node? next;
-            public Node? Next
+            private Node next;
+            public Node Next
             {
                   get { return next; }
                   set { next = value; }
@@ -36,7 +36,7 @@ public class GenericList<T>
             }
       }
 
-      private Node? head;
+      private Node head;
 
       // constructor
       public GenericList()
@@ -54,7 +54,7 @@ public class GenericList<T>
 
       public IEnumerator<T> GetEnumerator()
       {
-            Node? current = head;
+            Node current = head;
 
             while (current != null)
             {

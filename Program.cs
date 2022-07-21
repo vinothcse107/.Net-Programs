@@ -10,14 +10,6 @@ using System.Collections;
 namespace ConsoleTest.Programs;
 public class Program
 {
-      public record Mast(int fx, string fn)
-      {
-            public string str()
-            {
-                  return $"Hello World";
-            }
-      }
-
       public static void Main(string[] args)
       {
 
