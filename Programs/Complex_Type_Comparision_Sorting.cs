@@ -7,14 +7,9 @@ using System.Diagnostics;
 
 namespace ConsoleTest.Complex;
 
-public class Complex_Type_Comparision_Sorting
+public static class Complex_Type_Comparision_Sorting
 {
-      public Complex_Type_Comparision_Sorting()
-      {
-            Mein();
-      }
-
-      public static void Mein()
+      public static void Complex_Comparing()
       {
             Stopwatch st = new Stopwatch();
             st.Start();

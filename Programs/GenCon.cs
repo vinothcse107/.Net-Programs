@@ -17,12 +17,19 @@ namespace HotelWCFService
             public int ItemId { get; set; }
             public string ItemName { get; set; }
             public int Price { get; set; }
+            public int TotalQuantity { get; set; }
+            public bool ItemActive { get; set; }
+            public int FoodCategoryId { get; set; }
 
+            public override string ToString()
+            {
+                  return $"{ItemId} {ItemName} {Price}";
+            }
       }
 
-      public class Caller
+      public static class GenConCaller
       {
-            public List<Items> GetItems()
+            public static List<Items> GetItems()
             {
                   using (SqlCommand cmd = new SqlCommand())
                   {

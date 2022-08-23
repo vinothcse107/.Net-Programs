@@ -7,13 +7,8 @@ namespace ConsoleTest.Programs;
 OUTPUT : 
       Welcome MARKUS WILLIAM !
 */
-public class ExtensionMethodOfString
+public static class ExtensionMethodOfString
 {
-      public ExtensionMethodOfString()
-      {
-            Mark();
-      }
-
       public static void Mark()
       {
             string Name = "Markus William";

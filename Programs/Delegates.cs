@@ -7,14 +7,9 @@ Employee sivakumar Promoted
 Employee jagadeesh Promoted
 Employee subbalakshmi Promoted
 */
-public class Delegates
+public static class Delegates
 {
-      public Delegates()
-      {
-            Mein();
-      }
-
-      public static void Mein()
+      public static void Delegate_ex()
       {
 
             List<Employee> emplist = new List<Employee>();
