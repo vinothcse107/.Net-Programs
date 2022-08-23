@@ -33,12 +33,13 @@ namespace HotelWCFService
       }
       public static class GenCon<T> where T : new()
       {
+            const string con = "Data Source=VINOTH\\SQLEXPRESS;Initial Catalog = HotelManagement; Integrated Security = True";
             public static List<T> ExecutorGen(SqlCommand cmd)
             {
                   List<T> list = new List<T>();
                   try
                   {
-                        using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString))
+                        using (SqlConnection connection = new SqlConnection(con))
                         {
                               cmd.Connection = connection;
                               connection.Open();
@@ -69,7 +70,8 @@ namespace HotelWCFService
                   }
                   catch (Exception ex)
                   {
-                        throw new FaultException(ex.Message);
+                        Console.WriteLine(ex.Message);
+                        return list;
                   }
             }
             public static DataTable Executor(SqlCommand cmd)
@@ -78,7 +80,7 @@ namespace HotelWCFService
                   SqlDataAdapter adapter = null;
                   try
                   {
-                        using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString))
+                        using (SqlConnection connection = new SqlConnection(con))
                         {
                               cmd.Connection = connection;
                               adapter = new SqlDataAdapter(cmd);
@@ -90,8 +92,8 @@ namespace HotelWCFService
                   }
                   catch (Exception ex)
                   {
-                        new FaultException(ex.Message);
-                        return (dt);
+                        Console.WriteLine(ex.Message);
+                        return dt;
                   }
 
             }
@@ -100,7 +102,7 @@ namespace HotelWCFService
             {
                   try
                   {
-                        using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString))
+                        using (SqlConnection connection = new SqlConnection(con))
                         {
                               cmd.Connection = connection;
                               connection.Open();
@@ -109,7 +111,7 @@ namespace HotelWCFService
                   }
                   catch (Exception ex)
                   {
-                        new FaultException(ex.Message);
+                        Console.WriteLine(ex.Message);
                         return false;
                   }
             }

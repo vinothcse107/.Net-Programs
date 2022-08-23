@@ -8,20 +8,21 @@ namespace ConsoleTest.Programs
 {
       public class Items
       {
-            public string ItemId { get; set; }
+            public int ItemId { get; set; }
             public string ItemName { get; set; }
-            public string Price { get; set; }
-            private string id { get; set; }
+            public int Price { get; set; }
+            public int TotalQuantity { get; set; }
+            public bool ItemActive { get; set; }
+            public int FoodCategoryId { get; set; }
 
             public override string ToString()
             {
-                  return $"{ItemId} {ItemName} {Price} {id}";
+                  return $"{ItemId} {ItemName} {Price}";
             }
       }
 
       public static class GenericPropAssigner<T> where T : new()
       {
-
             public static T DynamicValues()
             {
                   Type extendedType = typeof(T);
@@ -37,7 +38,5 @@ namespace ConsoleTest.Programs
 
                   return (T)extendedObject;
             }
-
-
       }
 }
