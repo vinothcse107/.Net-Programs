@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.ServiceModel;
 using System.Web;
+using BenchmarkDotNet.Attributes;
 
 namespace HotelWCFService
 {
@@ -27,8 +28,10 @@ namespace HotelWCFService
             }
       }
 
+      [MemoryDiagnoser]
       public static class GenConCaller
       {
+            [Benchmark]
             public static List<Items> GetItems()
             {
                   using (SqlCommand cmd = new SqlCommand())
@@ -53,16 +56,19 @@ namespace HotelWCFService
 
                               using (SqlDataReader rdr = cmd.ExecuteReader())
                               {
+                                    Type Type = typeof(T);
+                                    // T t = new T();
+                                    PropertyInfo[] properties = Activator.CreateInstance(Type).GetType().GetProperties();
+
                                     while (rdr.Read())
                                     {
                                           // Method 1
-                                          //Type Type = typeof(T);
-                                          //var extendedObject = Activator.CreateInstance(Type);
+                                          // Slight Low Performance
+                                          // t = new T();
 
                                           // Method 2
-                                          Type Type = typeof(T);
-                                          T t = new T();
-                                          PropertyInfo[] properties = t.GetType().GetProperties();
+                                          // Best Performance
+                                          var t = Activator.CreateInstance(Type);
                                           foreach (var p in properties)
                                           {
                                                 Type.GetProperty(p.Name)
@@ -72,7 +78,6 @@ namespace HotelWCFService
                                     };
                               }
                               return list;
-
                         }
                   }
                   catch (Exception ex)
@@ -95,16 +100,13 @@ namespace HotelWCFService
                               adapter.Fill(dt);
                               return dt;
                         }
-
                   }
                   catch (Exception ex)
                   {
                         Console.WriteLine(ex.Message);
                         return dt;
                   }
-
             }
-
             public static bool NonQuery(SqlCommand cmd)
             {
                   try

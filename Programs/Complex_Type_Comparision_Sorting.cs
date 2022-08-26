@@ -96,12 +96,10 @@ public class Employee : IComparable, IEquatable<Employee>
       public int Id { set; get; }
       public string Name { set; get; }
       public int Experience { set; get; }
-
       public override string ToString()
       {
             return $"{Id} {Name} {Experience}";
       }
-
       public int CompareTo(object obj)
       {
             var e = obj as Employee;
@@ -113,7 +111,6 @@ public class Employee : IComparable, IEquatable<Employee>
             else
                   return 0;
       }
-
       public bool Equals(Employee other)
       {
             var x = other as Employee;
