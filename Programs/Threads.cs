@@ -9,7 +9,7 @@ public static class Threads
       public static void APIThreader()
       {
             st.Start();
-            string url = "https://www.amazon.in/";
+            string url = "https://dotnettutorials.net/";
             // "http://localhost:5049/";
 
             // Dictionary<int, string> dt = new Dictionary<int, string>();

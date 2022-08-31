@@ -30,28 +30,10 @@ public class Program
           // ExtensionMethodOfString.Mark();
           // GenConCaller.GetItems();
           // Threads.APIThreader();
+          // await Task.Run(() => TasksEx.FindFile());
 
           #endregion
-
-          await Task.Run(() => TasksEx.FindFile());
           Console.ReadKey();
-          // var t = new List<Task>();
-          //
-          // Task<int> a = Task.Run(() => { Thread.Sleep(3000); Console.WriteLine("Welcome1");
-          //     return 1;
-          // });
-          // Task b = Task.Run(() => { Thread.Sleep(2000); Console.WriteLine("Welcome2");});
-          // Task c = Task.Run(() => { Thread.Sleep(1000); Console.WriteLine("Welcome3");});
-          // Task d = Task.Run(() => { Thread.Sleep(6000); Console.WriteLine("Welcome4");}); 
-          // Task e = Task.Run(() => { Thread.Sleep(5000); Console.WriteLine("Welcome5");});
-          // Task f = Task.Run(() => { Thread.Sleep(5000); Console.WriteLine("Welcome6");});
-          //
-          // t.AddRange(new List<Task>(){a,b,c,d,e,f});
-          // await Task.WhenAll(t);
-          // Console.WriteLine(a.Result);
 
-          //
-          // st.Stop();
-          // Console.WriteLine(st.Elapsed);
       }
 }
