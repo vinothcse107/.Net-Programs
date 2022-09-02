@@ -3,10 +3,12 @@ using BenchmarkDotNet.Attributes;
 
 namespace ConsoleTest.Programs;
 
-[MemoryDiagnoser]
+// [MemoryDiagnoser]
 public static class TasksEx
 {
-    [Benchmark]
+    // [Benchmark]
+
+    public static Stopwatch st = new Stopwatch();
     public static async void FindFile()
     {
         string path = "C:/";
@@ -19,6 +21,7 @@ public static class TasksEx
             {
                 Console.WriteLine("Folder Name :");
                 string dirName = Console.ReadLine();
+                st.Start();
                 await DirFinder(path, dirName);
                 break;
             }
@@ -27,6 +30,7 @@ public static class TasksEx
             {
                 Console.WriteLine("File Name :");
                 string fileName = Console.ReadLine();
+                st.Start();
                 await FileFinder(path, fileName);
                 break;
             }
@@ -48,7 +52,7 @@ public static class TasksEx
             foreach (var s in d.GetFiles())
             {
                 if (s.Name.StartsWith(find))
-                    Console.WriteLine($"{s.FullName}");
+                    Console.WriteLine($"{s.FullName} {st.ElapsedMilliseconds}");
             }
             
             foreach (var v in d.GetDirectories())
@@ -67,7 +71,7 @@ public static class TasksEx
             var dirs = d.EnumerateDirectories();
             
             if (dirs.Any((f) => f.Name.StartsWith(find)))
-                Console.WriteLine(d.FullName);
+                Console.WriteLine($"{d.FullName} {st.ElapsedMilliseconds}");
             
             else
                 foreach (var v in dirs)
